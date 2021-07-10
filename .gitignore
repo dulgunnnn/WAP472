@@ -1,4 +1,8 @@
-/q1/node_modules
-/q2/node_modules
-/q3/node_modules
-/q4/node_modules
+W3D5/q1/node_modules/
+W3D5/q2/node_modules/
+W3D5/q3/node_modules/
+W3D5/q4/node_modules/
+W3D5/q1/package-lock.json
+W3D5/q2/package-lock.json
+W3D5/q3/package-lock.json
+W3D5/q4/package-lock.json
