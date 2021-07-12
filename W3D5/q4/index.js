@@ -1,40 +1,35 @@
 const express = require("express");
 const app = express();
-const path = require("path");
+
+const arr = ["0", "1", "2"];
 
 const urlencodedParser = express.urlencoded({ extended: false });
-app.use("/css", express.static(path.join(__dirname, "css")));
 
-app.get("/output", (req, res) => {
-  res.send(`Name: ${req.query.name}, Age: ${req.query.age}`);
+app.post("/add", urlencodedParser, (req, res, next) => {
+  arr.push(req.body.myText);
+  console.log(arr);
+  res.redirect("/");
 });
 
-app.post("/result", urlencodedParser, (req, res, next) => {
-  res.redirect(`/output?name=${req.body.name}&age=${req.body.age}`);
+app.get("/add", (req, res) => {
+  res.send(`
+  <form action="/add" method="post">
+      <label for="myText">Enter text</label>
+      <input type="text" id="myText" name="myText">
+      <input type="submit" value="Submit">
+    </form> 
+  `);
 });
 
 app.use("/", (req, res, next) => {
-  let hour = new Date().getHours();
-  let css = hour > 6 && hour < 18 ? "/css/day.css" : "/css/night.css";
-
+  let showItem = (arr) => {
+    return arr.map((item) => `<li>${item}</li>`);
+  };
   res.send(`
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="${css}">
-    <meta charset="utf-8">
-  </head>
-  <body>
-  <form action="/result" method="post">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name">
-      <label for="age">Age</label>
-      <input type="number" id="age" name="age">
-      <input type="submit" value="Submit Query">
-    </form> 
-  </body>
-  </html>  
+  <ul >
+    ${showItem(arr)}
+    </ul>
+    <a href="add">Add item</a>
     `);
 });
 
