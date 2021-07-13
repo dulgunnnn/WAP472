@@ -27,23 +27,6 @@ const products = [
   },
 ];
 
-const cartProducts = [
-  {
-    name: "Cart Product 1",
-    price: "2",
-    description: "Cart product test desctiption 1",
-    id: 10,
-    quantity: 5,
-  },
-  {
-    name: "Cart Product 2 ",
-    price: "15",
-    description: "Cart product test desctiption 2",
-    id: 11,
-    quantity: 22,
-  },
-];
-
 app.get("/", (req, res, next) => {
   res.render("product", { products: products });
 });
