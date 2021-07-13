@@ -1,0 +1,13 @@
+<%- include('head.ejs') %>
+    <form action="/addCookie" method="post">
+        <label for="key">Key</label>
+        <input type="text" name="key" required>
+        <label for="value">Value</label>
+        <input type="text" name="value">
+        <input type="submit" value="Add Cookie">
+    </form>
+
+    <form action="/remove" method="post">
+        <input type="submit" value="remove">
+    </form>
+    <%- include('end.ejs') %>
