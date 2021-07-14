@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="utf-8">
+    <title>W3D6 Q3-4</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+
+<body>
+    <h1>Products</h1>
+    <p><a href="shoppingcart" class="cart">Cart<span id="quantity">0</span></a></p>
+    <div class="container" id="feedback"></div>
+    <div class="container">
+        <% for(var i=0; i < products.length; i++) { %>
+            <div class="product-item">
+                <p><a>
+                        <%= products[i].name %>
+                    </a>
+                </p>
+                <p>
+                    <%= products[i].description %>
+                </p>
+                <span>
+                    $<%= products[i].price %>
+                </span>
+                <form class="addToCart">
+                    <input type="text" id="name" value="<%= products[i].name %>" hidden>
+                    <input type="text" id="price" value="<%= products[i].price %>" hidden>
+                    <input type="text" id="id" value="<%= products[i].id %>" hidden>
+                    <input type="submit" value="Add to Cart">
+                </form>
+            </div>
+            <% } %>
+    </div>
+</body>
+
+</html>
